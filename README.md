@@ -6,6 +6,6 @@ Frontend:
 - HTML5 & CSS3
 - JavaScript (ES6+)
 
-Ferramentas:
+🛠️ Ferramentas:
 - VS Code.
 - Git & GitHub.
