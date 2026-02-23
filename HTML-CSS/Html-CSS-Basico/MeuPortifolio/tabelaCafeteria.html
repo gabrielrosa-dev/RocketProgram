@@ -4,44 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabela Cafeteria</title>
+    <link rel="stylesheet" href="./assets/css/tabelacafeteria.css">
 </head>
 <body>
-    <table border="2px" cellpadding="8px" cellspacing="0">
-        <thead>
-            <tr>
-                <th colspan="8"> Horário de Funcionamento da StarCoffe</th>
-            </tr>
-            <tr>
-                <th>Horarios</th>
-                <th>Segunda</th>
-                <th>Terça</th>
-                <th>Quarta</th>
-                <th>Quinta</th> 
-                <th>Sexta</th>
-                <th>Sábado</th>
-                <th>Domingos e <br>Feriados</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td> <strong>Manhã</strong></td>
-                <td>08:00 <br> 12:00</td>
-                <td rowspan="2">Fechado</td>
-                <td>08:00 <br> 12:00</td>
-                <td>08:00 <br> 12:00</td>
-                <td> 08:00 <br> 12:00</td>
-                <td> 08:00 <br> 12:00</td>
-                <td rowspan="2"> 08:00 <br> 12:00</td>
-            </tr>
-            <tr>
-                <td> <strong>Tarde</strong></td>
-                <td>14:00 <br> 18:00</td>
-                <td>14:00 <br> 18:00</td>
-                <td>14:00 <br> 18:00</td>
-                <td>14:00 <br> 18:00</td>
-                <td>14:00 <br> 18:00</td>
-            </tr>
-        </tbody>
-    </table>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="8" class="titulo">
+                        ☕ Horário de Funcionamento da StarCoffee
+                    </th>
+                </tr>
+                <tr>
+                    <th>Horários</th>
+                    <th>Segunda</th>
+                    <th>Terça</th>
+                    <th>Quarta</th>
+                    <th>Quinta</th> 
+                    <th>Sexta</th>
+                    <th>Sábado</th>
+                    <th>Domingos e Feriados</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Manhã</strong></td>
+                    <td>08:00<br>12:00</td>
+                    <td rowspan="2" class="fechado">Fechado</td>
+                    <td>08:00<br>12:00</td>
+                    <td>08:00<br>12:00</td>
+                    <td>08:00<br>12:00</td>
+                    <td>08:00<br>12:00</td>
+                    <td rowspan="2">08:00<br>12:00</td>
+                </tr>
+                <tr>
+                    <td><strong>Tarde</strong></td>
+                    <td>14:00<br>18:00</td>
+                    <td>14:00<br>18:00</td>
+                    <td>14:00<br>18:00</td>
+                    <td>14:00<br>18:00</td>
+                    <td>14:00<br>18:00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </body>
 </html>
