@@ -12,7 +12,7 @@ body{
 }
 
 .container:hover .carta{
-    transform: rotateY(180deg);
+    transform: rotateY(180deg); /*Gira a carta em 180 graus no eixo Y quando o mouse estiver sobre o container*/
 }
 
 .carta{
@@ -35,38 +35,13 @@ body{
 }
 
 .frente{
-    background: white;
-    border: 2px solid black;
-}
-
-.topo{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 25px;
-    color: red;
-}
-
-.centro{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 100px;
-    color: red;
-}
-
-.baixo{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 25px;
-    color: red;
-    transform: rotate(180deg);
+    background-image:url("./img/versodecarta.jpg");
+    background-size:cover;
+    background-position:center;
 }
 
 .verso{
-    background-image:url("./img/versodecarta.jpg");
+    background-image:url("./img/rei.png");
     background-size:cover;
     background-position:center;
     transform:rotateY(180deg);
