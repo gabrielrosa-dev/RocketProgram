@@ -73,6 +73,10 @@ tbody tr:hover {
 }
 
 @media (max-width: 768px) {
+    .container {
+        overflow-x: auto;
+    }
+
     table {
         font-size: 12px;
     }
