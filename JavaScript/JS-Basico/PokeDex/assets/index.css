@@ -1,0 +1,148 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #f1c40f;
+    --accent-color: #e74c3c;
+    --bg-color: #1a252c;
+    --card-bg: #34495e;
+    --text-color: #ecf0f1;
+}
+
+body {
+    background-color: var(--bg-color) !important;
+}
+
+.title-shadow {
+    color: var(--secondary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+}
+
+/* Campos de entrada customizados por cima do Bootstrap */
+.custom-input, .custom-select {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.custom-input:focus, .custom-select:focus {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: 0 0 0 2px var(--secondary-color);
+}
+
+.custom-input::placeholder {
+    color: #bdc3c7;
+}
+
+.custom-input {
+    max-width: 400px;
+}
+
+/* CSS do Cartão com Efeito Rotativo (Flip Card) */
+.character-card {
+    background-color: transparent;
+    perspective: 1000px; /* Habilita o espaço 3D */
+    height: 320px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 12px;
+}
+
+.character-card:hover .card-inner {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* Rotaciona quando a classe 'flipped' é adicionada */
+.character-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border-radius: 12px;
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.character-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.1);
+    background-color: #2c3e50;
+}
+
+.character-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 0;
+}
+
+.character-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.character-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #bdc3c7;
+    margin-bottom: 0;
+}
+
+.no-results {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #bdc3c7;
+    padding: 3rem;
+}
+
+.flip-button {
+    margin-top: auto;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.flip-button:hover {
+    background-color: #f39c12;
+    transform: scale(1.05);
+}
