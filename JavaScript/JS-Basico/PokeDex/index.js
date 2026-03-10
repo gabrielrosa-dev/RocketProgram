@@ -137,7 +137,6 @@ selecaoFiltro.addEventListener('change', aplicarFiltro);
 
 renderizarPersonagens(personagens);
 
-// Eventos do modal
 document.getElementById('close-modal-btn').addEventListener('click', () => {
     document.getElementById('modal-overlay').classList.remove('active');
 });
@@ -147,3 +146,4 @@ document.getElementById('modal-overlay').addEventListener('click', (evento) => {
         document.getElementById('modal-overlay').classList.remove('active');
     }
 });
+
