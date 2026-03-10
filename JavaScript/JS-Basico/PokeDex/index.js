@@ -102,16 +102,16 @@ function renderizarPersonagens(personagensParaRenderizar) {
                     <div><span class="character-type">${tipoPt}</span></div>
                     <button class="flip-button">Veja a descrição</button>
                 </div>
-                <div class="card-back">
-                    <h2 class="character-name">${personagem.name}</h2>
-                    <p class="character-description">${personagem.description}</p>
-                    <button class="flip-button">Voltar à frente</button>
-                </div>
             </div>
         `;
 
         cartao.addEventListener('click', () => {
-            cartao.classList.toggle('flipped');
+            document.getElementById('modal-image').src = personagem.image;
+            document.getElementById('modal-image').alt = personagem.name;
+            document.getElementById('modal-name').textContent = personagem.name;
+            document.getElementById('modal-type').textContent = tipoPt;
+            document.getElementById('modal-description').textContent = personagem.description;
+            document.getElementById('modal-overlay').classList.add('active');
         });
 
         grade.appendChild(cartao);
@@ -136,3 +136,14 @@ campoBusca.addEventListener('input', aplicarFiltro);
 selecaoFiltro.addEventListener('change', aplicarFiltro);
 
 renderizarPersonagens(personagens);
+
+// Eventos do modal
+document.getElementById('close-modal-btn').addEventListener('click', () => {
+    document.getElementById('modal-overlay').classList.remove('active');
+});
+
+document.getElementById('modal-overlay').addEventListener('click', (evento) => {
+    if (evento.target.id === 'modal-overlay') {
+        document.getElementById('modal-overlay').classList.remove('active');
+    }
+});
