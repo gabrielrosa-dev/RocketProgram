@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const alertTrigger = document.getElementById('liveAlertBtn')
     if (alertTrigger) {
         alertTrigger.addEventListener('click', () => {
-            // Clear previous alerts
             alertPlaceholder.innerHTML = ''
 
             const isEmailValid = validateField(emailInput, emailInput.value.includes('@') && emailInput.value.includes('.'))
@@ -41,11 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (isEmailValid && isSubjectValid && isMessageValid) {
                 appendAlert('Mensagem enviada com sucesso!', 'success')
-                // Optional: clear form
-                // contactForm.reset()
-                // emailInput.classList.remove('is-valid')
-                // subjectSelect.classList.remove('is-valid')
-                // messageTextarea.classList.remove('is-valid')
             }
         })
     }
