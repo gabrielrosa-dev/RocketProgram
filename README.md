@@ -4,10 +4,11 @@ Este espaço foi criado para documentar minha jornada no Rocket Program da Alpar
 💻 Tecnologias & Hard Skills
 Frontend:
 - HTML5 & CSS3
+- Bootstrap 5 
 - JavaScript (ES6+)
 
 🛠️ Ferramentas:
-- VS Code.
+- VS Code / Antigravity
 - Git & GitHub.
 
 # Cafeteria | StarCoffe
