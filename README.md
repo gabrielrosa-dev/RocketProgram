@@ -12,7 +12,7 @@ Frontend:
 
 # Cafeteria | StarCoffe
 
-- O site abaixo é um segundo site da minha cafeteria, onde abordo mais afundo as funcionalidades do HTML, CSS e Java Script.
+- O site abaixo é um segundo site da minha cafeteria, onde abordo mais afundo as funcionalidades do HTML, CSS, Bootstrap e Java Script.
 - O site esta salvo no meu outro portifólio "/starcoffee-site"
 - Link do site:
 https://gabrielrosa-dev.github.io/starcoffee-site/index.html
