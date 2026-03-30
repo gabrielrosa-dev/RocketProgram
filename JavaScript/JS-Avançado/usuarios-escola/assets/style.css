@@ -1,0 +1,31 @@
+:root {
+    --primary-color: #4f46e5;
+}
+
+body.font-outfit {
+    font-family: 'Outfit', sans-serif;
+}
+
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,0.05) !important;
+}
+
+.list-group-item {
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}

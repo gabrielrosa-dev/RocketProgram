@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Luzes Inteligente</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Styles for Premium Feel -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-blue text-light overflow-hidden">
+    <div class="container py-5 vh-100 d-flex flex-column justify-content-center">
+        <header class="text-center mb-5">
+            <h1 class="display-4 fw-bold mb-2">Central de Luzes</h1>
+            <p id="system-status" class="lead text-secondary">Sistema pronto para uso</p>
+        </header>
+
+        <main class="row g-4 justify-content-center">
+            <!-- Quarto -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card bg-transparent border-secondary room-card text-center h-100 overflow-hidden" id="room-quarto">
+                    <div class="card-body d-flex flex-column align-items-center p-4">
+                        <div class="room-visual mb-3 p-3 rounded-4 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                            <span class="fs-2">🛏️</span>
+                        </div>
+                        <h3 class="card-title h5 mb-4 fw-normal text-white">Quarto</h3>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-warning btn-sm px-3 fw-bold btn-light-control" data-comodo="quarto" data-action="ligar">Ligar</button>
+                            <button class="btn btn-outline-secondary btn-sm px-3 btn-light-control" data-comodo="quarto" data-action="desligar">Desligar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sala -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card bg-transparent border-secondary room-card text-center h-100 overflow-hidden" id="room-sala">
+                    <div class="card-body d-flex flex-column align-items-center p-4">
+                        <div class="room-visual mb-3 p-3 rounded-4 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                            <span class="fs-2">🛋️</span>
+                        </div>
+                        <h3 class="card-title h5 mb-4 fw-normal text-white">Sala</h3>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-warning btn-sm px-3 fw-bold btn-light-control" data-comodo="sala" data-action="ligar">Ligar</button>
+                            <button class="btn btn-outline-secondary btn-sm px-3 btn-light-control" data-comodo="sala" data-action="desligar">Desligar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cozinha -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card bg-transparent border-secondary room-card text-center h-100 overflow-hidden" id="room-cozinha">
+                    <div class="card-body d-flex flex-column align-items-center p-4">
+                        <div class="room-visual mb-3 p-3 rounded-4 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                            <span class="fs-2">🍳</span>
+                        </div>
+                        <h3 class="card-title h5 mb-4 fw-normal text-white">Cozinha</h3>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-warning btn-sm px-3 fw-bold btn-light-control" data-comodo="cozinha" data-action="ligar">Ligar</button>
+                            <button class="btn btn-outline-secondary btn-sm px-3 btn-light-control" data-comodo="cozinha" data-action="desligar">Desligar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Banheiro -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card bg-transparent border-secondary room-card text-center h-100 overflow-hidden" id="room-banheiro">
+                    <div class="card-body d-flex flex-column align-items-center p-4">
+                        <div class="room-visual mb-3 p-3 rounded-4 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                            <span class="fs-2">🚿</span>
+                        </div>
+                        <h3 class="card-title h5 mb-4 fw-normal text-white">Banheiro</h3>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-warning btn-sm px-3 fw-bold btn-light-control" data-comodo="banheiro" data-action="ligar">Ligar</button>
+                            <button class="btn btn-outline-secondary btn-sm px-3 btn-light-control" data-comodo="banheiro" data-action="desligar">Desligar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="mt-5 text-center">
+            <div id="status-message" class="alert bg-transparent border border-secondary text-secondary d-inline-block px-4 py-2 rounded-pill">
+                Pressione um botão para controlar as luzes.
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

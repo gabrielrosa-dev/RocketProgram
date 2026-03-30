@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="escolaApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cadastro Escolar - Bootstrap</title>
+    
+    <!-- Registro de Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+    <!-- Estilo Minimalista -->
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body ng-controller="AppController" class="bg-light font-outfit">
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                
+                <!-- Título e Mensagem -->
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold text-primary mb-3">Gestão Escolar</h1>
+                    <p class="lead text-muted" ng-bind="mensagem"></p>
+                </div>
+
+                <!-- Perfil do Usuário Principal -->
+                <div class="card shadow-sm border-0 rounded-4 mb-5">
+                    <div class="card-body text-center p-4">
+                        <div ng-if="usuario.tipo === 'Aluno'" class="mb-3">
+                            <img src="./assets/image/Garoto sorridente no corredor da escola.png" 
+                                 alt="Avatar Aluno" class="rounded-circle shadow-sm" style="width: 120px; height: 120px; object-fit: cover;">
+                        </div>
+                        <div ng-if="usuario.tipo === 'Professor(a)'" class="mb-3">
+                            <img src="./assets/image/professor.png" 
+                                 alt="Avatar Professor" class="rounded-circle shadow-sm" style="width: 120px; height: 120px; object-fit: cover;">
+                        </div>
+                        <h2 class="h4 fw-bold mb-1">{{ usuario.nome }}</h2>
+                        <span class="badge rounded-pill bg-primary px-3 py-2 text-uppercase">{{ usuario.tipo }}</span>
+                    </div>
+                </div>
+
+                <hr class="my-5 opacity-25">
+
+                <!-- Seção com Controller Aninhado -->
+                <div class="list-section" ng-controller="ListaController">
+                    <h3 class="h5 fw-semibold mb-4 text-center" ng-bind="subtitulo"></h3>
+
+                    <!-- Filtros em tempo real -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-8">
+                            <div class="input-group input-group-lg shadow-sm rounded-3 overflow-hidden">
+                                <span class="input-group-text border-0 bg-white"><i class="bi bi-search"></i>🔎</span>
+                                <input type="text" ng-model="filtro" placeholder="Buscar por nome..." class="form-control border-0">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <select ng-model="filtroTipo" class="form-select form-select-lg border-0 shadow-sm rounded-3">
+                                <option value="">Todos os Tipos</option>
+                                <option value="Aluno">Aluno</option>
+                                <option value="Professor(a)">Professor(a)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Lista de Usuários -->
+                    <div class="card shadow-sm border-0 rounded-4 overflow-hidden mb-4">
+                        <ul class="list-group list-group-flush">
+                            <li ng-repeat="user in usuarios | filter:filtro | filter:{ tipo: filtroTipo }" class="list-group-item d-flex justify-content-between align-items-center p-3 border-light">
+                                <div class="d-flex flex-column">
+                                    <span class="fw-semibold text-dark">{{ user.nome | uppercase }}</span>
+                                    <small class="text-secondary">{{ user.dataCadastro | date:'dd/MM/yyyy' }}</small>
+                                </div>
+                                <span class="badge rounded-pill px-3 py-2" 
+                                      ng-class="user.tipo === 'Aluno' ? 'bg-success-subtle text-success' : 'bg-warning-subtle text-warning-emphasis'">
+                                    {{ user.tipo }}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Métricas de resumo -->
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <div class="card border-0 shadow-sm rounded-4 text-center p-3 bg-white">
+                                <span class="text-uppercase text-muted small fw-bold mb-1">Total de Alunos</span>
+                                <span class="h3 fw-bold text-success mb-0">{{ (usuarios | filter:{tipo:'Aluno'}:true).length }}</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card border-0 shadow-sm rounded-4 text-center p-3 bg-white">
+                                <span class="text-uppercase text-muted small fw-bold mb-1">Total de Professores</span>
+                                <span class="h3 fw-bold text-primary mb-0">{{ (usuarios | filter:{tipo:'Professor(a)'}:true).length }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Lógica da Aplicação -->
+    <script src="./assets/app.js"></script>
+</body>
+</html>
