@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <link rel="stylesheet" href="./previsao.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" 
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="weatherController">
+    <section class="card" ng-class="{ active: dados }">
+        <img
+        class="icon"
+        ng-src="{{ iconUrl }}" 
+        alt="{{ dados.weather[0].description }}">
+        <div class="temp">
+            <span class="temp-number">{{ dados.main.temp | number:0 }}°C</span>
+        </div>
+        <div class="location">
+            <span class="city">{{ dados.name }}</span>
+            <span class="country">{{ dados.sys.country }}</span>
+        </div>
+        <div class="description">
+            <span class="description-text">{{ dados.weather[0].description }}</span>
+        </div>
+        <div class="details">
+            <div>
+                <span>Min: {{ dados.main.temp_min | number:0 }}°C</span>
+                <span>Max: {{ dados.main.temp_max | number:0 }}°C</span>
+            </div>
+            <div>
+                <span>Sensação térmica</span>
+                <span>{{ dados.main.feels_like | number:0 }}°C</span>
+            </div>
+            <div>
+                <span>Umidade</span>
+                <span>{{ dados.main.humidity }}%</span>
+            </div>
+            <div>
+                <span>Vento</span>
+                <span>{{ dados.wind.speed }} km/h</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="search">
+        <input type="text" placeholder="Digite a cidade" ng-model="cidade" ng-keypress="$event.keyCode === 13 && buscar()">
+        <button ng-click="buscar()">Buscar</button>
+    </section>
+
+    <script src="./main.js"></script>
+    
+</body>
+</html>
