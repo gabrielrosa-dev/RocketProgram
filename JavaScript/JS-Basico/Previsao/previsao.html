@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="previsao.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" 
+        rel="stylesheet">
+</head>
+<body>
+    <section class="card">
+        <img
+        class="icon"
+        src="https://openweathermap.org/payload/api/media/file/10d%402x.png" 
+        alt="clouds">
+        <div class="temp">
+            <span class="temp-number">25°C</span>
+        </div>
+        <div class="location">
+            <span class="city">Curitiba</span>
+            <span class="country">BR</span>
+        </div>
+        <div class="description">
+            <span class="description-text">Nublado</span>
+        </div>
+        <div class="details">
+            <div>
+                <span>Min: 15°C</span>
+                <span>Max: 25°C</span>
+            </div>
+            <div>
+                <span>Sensação térmica</span>
+                <span>25°C</span>
+            </div>
+            <div>
+                <span>Umidade</span>
+                <span>60%</span>
+            </div>
+            <div>
+                <span>Vento</span>
+                <span>10 km/h</span>
+            </div>
+        </div>
+    </section>
+    <section class="search">
+        <input type="text" placeholder="Digite a cidade">
+        <button>Buscar</button>
+    </section>
+    <script src="previsao.js"></script>
+    
+</body>
+</html>
