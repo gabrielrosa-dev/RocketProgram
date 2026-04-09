@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="HabitTrackerApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitos e Bem-Estar</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body ng-controller="MainController" class="py-5">
+
+    <div class="container animate-fade">
+        <header class="text-center mb-5">
+            <h1 class="display-4 fw-bold mb-2">Habit Booster 🚀</h1>
+            <p class="text-secondary">Cultivando os seus Hábitos e seu Bem-Estar</p>
+        </header>
+
+        <div class="row g-4 mb-4 animate-fade">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 glass-bg">
+                    <div class="card-body text-center">
+                        <h2 class="display-6 fw-bold mb-1">{{stats.totalDays || 0}}</h2>
+                        <span class="text-muted text-uppercase small ls-1">Dias Registrados</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 glass-bg">
+                    <div class="card-body text-center">
+                        <h2 class="display-6 fw-bold mb-1">{{stats.avgMood || 0}}</h2>
+                        <span class="text-muted text-uppercase small ls-1">Média de Humor</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 glass-bg">
+                    <div class="card-body text-center">
+                        <h2 class="display-6 fw-bold mb-1">{{stats.completionRate || 0}}%</h2>
+                        <span class="text-muted text-uppercase small ls-1">Hábitos Concluídos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 glass-bg mb-4">
+            <div class="card-body p-4">
+                <h5 class="card-title fw-bold mb-4 d-flex align-items-center">
+                    <i class="bi bi-pencil-square me-2"></i> Registrar Hoje
+                </h5>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label text-secondary small fw-bold">Data do Registro</label>
+                        <input type="date" class="form-control bg-dark text-white border-secondary" ng-model="todayRecord.date">
+                    </div>
+
+                    <div class="col-12 mb-4">
+                        <label class="form-label text-secondary small fw-bold">Como você está se sentindo?</label>
+                        <div class="d-flex justify-content-between gap-2">
+                            <button class="mood-btn-bs" ng-class="{'active': todayRecord.mood == 1}" ng-click="selectMood(1)">
+                                <span class="fs-2">😢</span><br><small>Triste</small>
+                            </button>
+                            <button class="mood-btn-bs" ng-class="{'active': todayRecord.mood == 2}" ng-click="selectMood(2)">
+                                <span class="fs-2">😐</span><br><small>Neutro</small>
+                            </button>
+                            <button class="mood-btn-bs" ng-class="{'active': todayRecord.mood == 3}" ng-click="selectMood(3)">
+                                <span class="fs-2">🙂</span><br><small>Feliz</small>
+                            </button>
+                            <button class="mood-btn-bs" ng-class="{'active': todayRecord.mood == 4}" ng-click="selectMood(4)">
+                                <span class="fs-2">🤩</span><br><small>Incrível</small>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mb-4">
+                        <label class="form-label text-secondary small fw-bold">Hábitos do Dia</label>
+                        <div class="row row-cols-2 row-cols-md-5 g-2">
+                            <div class="col" ng-repeat="habit in todayRecord.habits">
+                                <div class="habit-btn-bs d-flex align-items-center gap-2 p-2 rounded-2 border" 
+                                     ng-class="{'active': habit.completed, 'border-secondary': !habit.completed, 'border-primary': habit.completed}"
+                                     ng-click="toggleHabit(habit)">
+                                    <i class="bi" ng-class="habit.completed ? 'bi-check-circle-fill text-primary' : 'bi-circle text-secondary'"></i>
+                                    <span class="small">{{habit.name}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mb-4">
+                        <label class="form-label text-secondary small fw-bold">Observação (Opcional)</label>
+                        <textarea class="form-control bg-dark text-white border-secondary" rows="2" ng-model="todayRecord.observation" placeholder="Como foi o seu dia?"></textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100 py-3 fw-bold" ng-click="saveCurrentRecord()">
+                            Salvar Registro 🚀
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0 glass-bg mb-4">
+            <div class="card-body p-4">
+                <h6 class="card-title fw-bold mb-3 d-flex align-items-center">
+                    <i class="bi bi-search me-2"></i> Filtrar Histórico
+                </h6>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small">Por Humor</label>
+                        <select class="form-select bg-dark text-white border-secondary" ng-model="filters.mood">
+                            <option value="">Todos</option>
+                            <option value="1">😢 Triste</option>
+                            <option value="2">😐 Neutro</option>
+                            <option value="3">🙂 Feliz</option>
+                            <option value="4">🤩 Incrível</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary small">A partir da data</label>
+                        <input type="date" class="form-control bg-dark text-white border-secondary" ng-model="filters.startDate">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+            <h5 class="fw-bold m-0"><i class="bi bi-calendar3 me-2"></i> Histórico de Registros</h5>
+        </div>
+        <div class="card shadow-sm border-0 glass-bg overflow-hidden">
+            <div class="list-group list-group-flush bg-transparent">
+                <div ng-if="records.length === 0" class="list-group-item bg-transparent text-center py-5 text-secondary">
+                    Nenhum registro encontrado. Comece a registrar hoje!
+                </div>
+                <div class="list-group-item bg-transparent p-4 animate-fade" ng-repeat="record in records | filter:filterRecords">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <span class="h5 fw-bold me-2">{{record.date | date:'dd/MM/yyyy'}}</span>
+                            <span class="badge rounded-pill bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25">{{record.getCompletionPercentage()}}%</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="fs-3" title="{{record.getMoodEmoji()}}">
+                                {{record.mood == 1 ? '😢' : record.mood == 2 ? '😐' : record.mood == 3 ? '🙂' : '🤩'}}
+                            </span>
+                            <button class="btn btn-outline-danger btn-sm border-0" ng-click="deleteRecord(record.id)">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <p class="text-secondary small mb-3" ng-if="record.observation">"{{record.observation}}"</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge rounded-pill d-flex align-items-center gap-1 py-2 px-3 border" 
+                                  ng-repeat="habit in record.habits" 
+                                  ng-class="habit.completed ? 'bg-success bg-opacity-10 text-success border-success border-opacity-25' : 'bg-secondary bg-opacity-10 text-secondary border-secondary border-opacity-25'">
+                                <i class="bi" ng-class="habit.completed ? 'bi-check-lg' : 'bi-x-lg'"></i> {{habit.name}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+    <script src="assets/js/models.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/service.js"></script>
+</body>
+</html>

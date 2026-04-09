@@ -1,0 +1,132 @@
+:root {
+    /* Gradiente moderno para o fundo da página */
+    --bg-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    
+    /* Configurações para o efeito de vidro (Glassmorphism) */
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    /* Cor principal do texto */
+    --text-main: #f8fafc;
+}
+
+* {
+    /* Fonte padrão da aplicação */
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    background-attachment: fixed; /* Mantém o fundo fixo ao rolar */
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* Classe para aplicar o efeito de vidro em cartões do Bootstrap */
+.glass-bg {
+    background: var(--glass) !important;
+    backdrop-filter: blur(10px); /* Desfoque do fundo */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border) !important;
+}
+
+/* Estilo para os botões de Humor (Customizados para Fugir do Padrão) */
+.mood-btn-bs {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1rem 0;
+    color: #e2e8f0; /* Cor de texto mais brilhante */
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.mood-btn-bs:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Estado Ativo do Botão de Humor */
+.mood-btn-bs.active {
+    background: rgba(13, 110, 253, 0.2);
+    border-color: #0d6efd;
+    color: white;
+    transform: scale(1.05); /* Pequeno zoom ao selecionar */
+}
+
+/* Estilo para os itens de Hábito na grade */
+.habit-btn-bs {
+    cursor: pointer;
+    transition: 0.2s;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.habit-btn-bs:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Estado Ativo do Hábito (Quando Concluído) */
+.habit-btn-bs.active {
+    background: rgba(13, 110, 253, 0.1) !important;
+}
+
+/* Animação de entrada suave (Fade In) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Espaçamento de letra para títulos secundários */
+.ls-1 {
+    letter-spacing: 1px;
+}
+
+/* Sobrescrevendo classes do Bootstrap para usar cores mais claras e legíveis no fundo escuro */
+.text-secondary {
+    color: #cbd5e1 !important; /* Cor cinza-claro azulado */
+}
+
+.text-muted {
+    color: #94a3b8 !important; /* Cor cinza média, mas ainda clara o suficiente */
+}
+
+label.form-label {
+    color: #e2e8f0 !important; /* Labels dos campos bem claras */
+}
+
+.card-title {
+    color: #ffffff !important; /* Títulos dos cartões em branco puro */
+}
+
+small, .small {
+    color: #e2e8f0 !important; /* Textos pequenos mais claros */
+}
+
+/* Deixando os valores das estatísticas (Stats) em branco puro */
+.display-6 {
+    color: #ffffff !important;
+}
+
+/* Deixando as datas no histórico em branco puro */
+.list-group-item .h5 {
+    color: #ffffff !important;
+}
+
+/* Melhorando a claridade dos campos de entrada (Inputs e Selects) */
+.form-control, .form-select {
+    color: #ffffff !important; /* Texto digitado em branco */
+    border-color: rgba(255, 255, 255, 0.3) !important; /* Bordas mais visíveis */
+}
+
+.form-control::placeholder {
+    color: #94a3b8 !important; /* Placeholder um pouco mais visível */
+}
+
+/* Estilo específico para o texto da observação no histórico */
+.record-item p, .list-group-item p {
+    color: #f1f5f9 !important; /* Cinza quase branco para as observações */
+}
